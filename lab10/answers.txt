@@ -1,0 +1,18 @@
+1 - 2.  dot_double_c took           43.7 ms
+        dot_double took             43.8 ms
+        dot_single_c took           39.2 ms
+        dot_single took             36.5 ms
+        map_poly_double_c1 took     43.9 ms
+        map_poly_double_c2 took     42.7 ms
+        map_poly_double took        137.0 ms
+        map_poly_single_c took      21.6 ms
+        map_poly_single took        136.5 ms
+
+        Suffice it to say, our asm functions were really close and in some cases even faster then the c 
+        implementation atleast when it came to the dot product, as for the map_poly functions I'll assume
+        that I had a really poor algorithm for it, but regardless even with compiler optimization turned
+        on, the asm implementation beat with the c-implementation for dot product. However for the map_poly
+        functions its not even close.
+
+3. x87 sin fucntion was about 3x slower as compared to the sin stdlib function.
+

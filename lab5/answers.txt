@@ -1,0 +1,47 @@
+1. Model name:                11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz
+    CPU family:              6
+    Model:                   140
+    Thread(s) per core:      2
+    Core(s) per socket:      4
+    Socket(s):               1
+
+2. For the polynomial functions:
+
+   #Implementation1: 505.8ms
+   #Implementation2: 278.1ms  
+   ~50% faster calculation
+
+   For the is_odd functions: 
+   
+   #Implementation1: 857.6ms
+   #Implemantation2: 596.9ms
+   ~30% faster
+   
+   For the mul functions:
+
+   #Implementation1: 185.2ms
+   #Implementation2: 176.6ms
+   ~5% faster
+
+3. The c implementation was always faster than then the more optimized ASM implementations in most scenarios. For example the c implementaion while being the "slower" algorithm took 168.6 ms, which is significantly faster than our ASM functions. Similarly the is_odd functions in c took 348.9 seconds, while our fastest ASM implementation took 596.9ms. Finally for the mul function the lazy c implementation and the ASM implementation seem to be very close with on avg being only about 2ms apart.
+
+4. this one is realy weird, but basically when I turn off performance mode, the c implementation for mul is faster.
+
+	On power saver: 
+              mul1(123) calculated   1612210200000000 in   534.3 ms
+              mul2(123) calculated   1612210200000000 in   511.7 ms
+              mul3(123) calculated   1612210200000000 in   511.1 ms
+        On balanced:
+              mul1(123) calculated   1612210200000000 in   187.3 ms
+              mul2(123) calculated   1612210200000000 in   176.5 ms
+              mul3(123) calculated   1612210200000000 in   179.6 ms
+        On performance:
+              mul1(123) calculated   1612210200000000 in   181.6 ms
+              mul2(123) calculated   1612210200000000 in   170.5 ms
+              mul3(123) calculated   1612210200000000 in   176.0 ms
+        I switched back to battery saver after the other ones:
+              mul1(123) calculated   1612210200000000 in   523.7 ms
+              mul2(123) calculated   1612210200000000 in   508.8 ms
+              mul3(123) calculated   1612210200000000 in   500.6 ms
+
+I don't get why, this is but this seems to be a trend

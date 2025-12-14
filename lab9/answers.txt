@@ -1,0 +1,4 @@
+1. Not all heap blocks were freed, but I managed to reduce it.
+2.~50% on the loop, %40 on branch mispredictions, %10 on swapping values
+3. I ran a reversed array, a random array, and an Almost sorted array
+4.

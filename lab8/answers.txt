@@ -1,0 +1,35 @@
+1. This was the result of calculating an array the size of the l1 cache ~32K using row access.
+
+Calculated 1.71216 in     0.01ms on 4096*1 array. 
+
+
+This was the result of calculating an array the size of the l1 cache using column access:
+
+Calculated 1.71216 in     0.02ms on 64*64 array.
+
+In general when accessing by row is significantly faster even in worst case situations, as compared to the column access which is slower.
+
+2. the column-access gets much slower as the size of an array increase, for example this was the result of using a highly composite number like 10810800 
+
+Calculated -79.7103 in    82.81ms on 48*225225 array.
+
+THe total size of the array with number was 84459kB, which far exceeds the capacity of the l1 cache, Similarly using the number 1081080 produces an array sized 8445 kB, but in comparison the results are computed significantly faster with the worst case being:
+
+Calculated 77.6787 in     3.87ms on 33*32760 array.
+
+Which is roughly a 21x difference in speed
+
+3. Suprisingly the conditional move actually slowed it down, I honeslty have no idea why, but basically using shifting on the previous hailstone made it speed up and actually beat the cmov implementation, this is without using O3
+
+       hailstone_length_c calculated  218020677 in 422 ms
+         hailstone_length calculated  218020677 in 295 ms
+    hailstone_length_cmov calculated  218020677 in 312 ms
+
+With O3:
+       hailstone_length_c calculated  218020677 in 256 ms
+         hailstone_length calculated  218020677 in 264 ms
+    hailstone_length_cmov calculated  218020677 in 309 ms
+
+I am pretty sure either I messed up my cmov or it actually made this slower than the older implementation.
+
+

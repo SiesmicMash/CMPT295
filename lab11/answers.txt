@@ -1,0 +1,24 @@
+1-2.  For the dot double the difference was ~25% faster
+        dot_double took    21.4 ms
+        dot_double_vec took    16.1 ms
+        dot_double_vc took    15.6 ms
+
+    For the dot single the difference was about 3x faster 
+        dot_single took    25.2 ms
+        dot_single_vec took     8.0 ms
+        dot_single_vc took     7.7 ms
+
+    For the map_poly_double functions the difference was almost 3x faster
+        map_poly_double took    71.2 ms
+        map_poly_double_vec took    22.0 ms
+        map_poly_double_vc took    21.7 ms
+
+    For the map_poly_single functions the vectorized approach was 6x faster
+        map_poly_single took    63.5 ms
+        map_poly_single_vec took    10.8 ms
+        map_poly_single_vc took    10.7 ms
+
+3. The main reason that I can assume is that for the dot_product the compiler will have to follow exactly as
+the code is implemented, which also means using the inefficent horizontal add that the compiler is locked into 
+using. Where as the vectorization of the polynomial function doesn't require the horizontal add.
+
