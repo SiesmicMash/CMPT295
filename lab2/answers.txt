@@ -1,0 +1,7 @@
+Usaid Syed 
+	
+301655464
+ 
+1. The value that is going through the do_something function, seems to be adding 60 to some provided integers while comparing for less then between those two inegers.
+
+2. I chose the preserserved registers to store the value for a since its appearing multiple times during our calculating, while I used the non-preserved registers for b + c + d.

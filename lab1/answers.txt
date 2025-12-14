@@ -1,0 +1,60 @@
+1.
+as --warn array_sum.S -o array_sum.o
+
+gcc -Wall -Wpedantic -std=c17 -march=haswell -c array_sum_speed.c -c
+
+gcc array_sum.0 array_sum_speed.o -o a.out
+
+./a.out 1000000
+
+2. 
+first command I used was :
+gcc -Wall -Wpedantic -std=c17 -march=haswell -c array_sum.c -c 
+
+Using array_sum.S: 
+
+	calculated 4502733 in 0.407024 ms
+	calculated 4502733 in 0.404162 ms
+	calculated 4502733 in 0.377903 ms
+	calculated 4502733 in 0.387379 ms
+	calculated 4502733 in 0.386912 ms
+	calculated 4502733 in 0.396312 ms
+	calculated 4502733 in 0.393974 ms
+	calculated 4502733 in 0.359351 ms
+	calculated 4502733 in 0.35924 ms
+	calculated 4502733 in 0.389839 ms
+
+Using array_sum.c : 
+	calculated 4502733 in 1.90455 ms
+	calculated 4502733 in 2.11982 ms
+	calculated 4502733 in 2.00414 ms
+	calculated 4502733 in 2.0299 ms
+	calculated 4502733 in 2.06235 ms
+	calculated 4502733 in 2.1398 ms
+	calculated 4502733 in 2.03693 ms
+	calculated 4502733 in 1.89662 ms
+	calculated 4502733 in 1.95568 ms
+	calculated 4502733 in 2.10159 ms
+Using -O3 :
+	calculated 4502733 in 0.183957 ms
+	calculated 4502733 in 0.079102 ms
+	calculated 4502733 in 0.071645 ms
+	calculated 4502733 in 0.070319 ms
+	calculated 4502733 in 0.064793 ms
+	calculated 4502733 in 0.064749 ms
+	calculated 4502733 in 0.064778 ms
+	calculated 4502733 in 0.064923 ms
+	calculated 4502733 in 0.065086 ms
+	calculated 4502733 in 0.065095 ms
+
+3. The c implementation with -O3 ended up being the fastest implementation possible, when comparing to native c it was about 33x as fast. Despite us also using assembly code, using an optimized compiler produced a faster runtime.
+
+multiply_add result:
+10 + 20 * 30 = 610
+10 + 8388608 * 3 = 25165834
+6 + -20 * 30 = -594
+10 + 7 * -2 = -4
+-731 + 852 * -213 = -182207
+
+
+
